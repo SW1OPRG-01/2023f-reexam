@@ -1,3 +1,6 @@
+#ifndef WIRE_H
+#define WIRE_H
+
 class Wire {
   public: 
     Wire(double specificResistance, double crossSectionalArea, double length);
@@ -7,3 +10,5 @@ class Wire {
     double crossSectionalArea;
     double specificResistance;
 };
+
+#endif
