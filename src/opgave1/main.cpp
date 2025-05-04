@@ -1,34 +1,39 @@
 #include <iostream>
-#include <string>
 
-double calc_bmi(double weight, double height);
-std::string bmi_category(double bmi);
+using namespace std;
 
-int main(int argc, char** argv) {
-  
-  double weight;
-  double height;
+void mid_value(const double *left, const double *right, double *middle);
+void min_max_value(double left, double right, double *min, double *max);
 
-  std::cout << "Gief weight (in kilos) and height (in meters): ";
-  std::cin >> weight >> height;
-  double bmi = calc_bmi(weight, height);
-  std::cout << bmi << " " << bmi_category(bmi) << std::endl;
-  
+int main()
+{
+  double left, right;
+  double middle;
+  double min, max;
+  cout << "Indtast 2 kommatal: ";
+  cin >> left >> right;
+  mid_value(&left, &right, &middle);
+  min_max_value(left, right, &min, &max);
+  cout << endl
+  << "Middle value er: " << middle << endl;
+  cout << "Minimum value er: " << min << " og maximum value er " << max << endl;
   return 0;
 }
 
-double calc_bmi(double weight, double height) {
-  return weight / (height * height);
+void mid_value(const double *left, const double *right, double *middle){
+  *middle = (*left + *right) / 2;
 }
 
-std::string bmi_category(double bmi) {  
-  if(bmi <= 18.5) {
-    return "Undervægtig";
-  } else if(bmi > 18.5 && bmi <= 25) {
-    return "Normalvægtig";
-  } else if(bmi > 25 && bmi <= 30) {
-    return "Overvægtig";
-  } else {
-    return "Svært overvægtig";
+void min_max_value(double left, double right, double *min, double *max)
+{
+  if (left < right)
+  {
+    *min = left;
+    *max = right;
+  }
+  else
+  {
+    *min = right;
+    *max = left;
   }
 }
